@@ -1,10 +1,10 @@
 'use strict'
 
 customElements.define(
-	'app-container',
+	'inner-element',
 	class extends HTMLElement {
 		connectedCallback () {
-			this.innerHTML = `<inner-element></inner-element>`
+			this.innerHTML = `Yo soy otro web component`
 		}
 	}
 )
