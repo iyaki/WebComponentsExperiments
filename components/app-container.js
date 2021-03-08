@@ -2,31 +2,31 @@ import './inner-element.js'
 import './another-element.js'
 
 window.customElements.define('app-container', class extends HTMLElement {
-	constructor() {
-		super()
-		this.showAnotherElement = false;
-	}
+	showAnotherElement = false
 
-	connectedCallback () {
-		let buttonText = 'Show another element'
-		if (this.showAnotherElement) {
-			buttonText = 'Hide another element'
-		}
-
+	connectedCallback() {
 		this.innerHTML = `
-		<button name="another-element">${buttonText}</button>
+		<button name="another-element">Add another element</button>
 		<inner-element></inner-element>
 		`
 
-		if (this.showAnotherElement) {
-			this.innerHTML += `<another-element></another-element>`
-		}
-
 		this
 			.querySelector('button[name="another-element"]')
-			.addEventListener('click', () => {
-				this.showAnotherElement = !this.showAnotherElement
-				this.connectedCallback()
-			})
+			.addEventListener('click', this.toggleAnotherElement.bind(this))
+	}
+
+	toggleAnotherElement() {
+		this.showAnotherElement = !this.showAnotherElement
+
+		const button = this.querySelector('button[name="another-element"]')
+		if (this.showAnotherElement) {
+			button.innerText = 'Remove another element'
+
+			this.appendChild(document.createElement('another-element'))
+		} else {
+			button.innerText = 'Add another element'
+
+			this.querySelector('another-element').remove()
+		}
 	}
 })

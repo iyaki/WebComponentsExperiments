@@ -4,7 +4,7 @@ window.customElements.define('inner-element', class extends HTMLElement {
 		this.happines = ''
 	}
 
-	connectedCallback () {
+	connectedCallback() {
 		this.innerHTML = `
 		<div>Yo soy otro web component${this.happines}</div>
 		<button name="happines">:D</button>
