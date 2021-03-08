@@ -1,4 +1,4 @@
-export default class extends HTMLElement {
+window.customElements.define('inner-element', class extends HTMLElement {
 	constructor() {
 		super()
 		this.happines = ''
@@ -20,4 +20,4 @@ export default class extends HTMLElement {
 				}
 			)
 	}
-}
+})

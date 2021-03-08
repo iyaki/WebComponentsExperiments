@@ -1,9 +1,3 @@
-'use strict'
-
-import AppContainer from './components/app-container.js'
-window.customElements.define('app-container', AppContainer)
-
-import InnerElement from './components/inner-element.js'
-window.customElements.define('inner-element', InnerElement)
+import './components/app-container.js'
 
 document.body.appendChild(document.createElement('app-container'))
